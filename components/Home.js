@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { increase, decrease } from '../actions/count'
 
 function Home({ number, increase, decrease }) {
+  //console.log("arguments : " , arguments)
   return (
     <div>
       Some state changes:
@@ -14,6 +15,7 @@ function Home({ number, increase, decrease }) {
 }
 
 export default connect(
+ // console.log("hello world")
   state => ({ number: state.count.number }),
   { increase, decrease }
 )(Home)
