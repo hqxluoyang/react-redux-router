@@ -1,6 +1,7 @@
 import React from 'react'
 import {connect} from 'react-redux'
 import {set_green , set_red} from '../actions/set'
+import main from  '../main.css'
 
 function hset ({val , set_green , set_red}) {
 	
@@ -8,7 +9,7 @@ function hset ({val , set_green , set_red}) {
 		<div>
 			<p>{val}</p>
 		bbbbbbbbbbbbbbbbbbbbbbbbbb
-			<p>hhhhhhhhhhhhhhhhhhhh</p>
+			<p className='bg'>hhhhhhhhhhhhhhhhhhhh</p>
 			<button onClick={()=>set_red()}>red</button>
 			<button onClick={()=>set_green()}>green</button>
 		</div>
