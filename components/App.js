@@ -1,24 +1,20 @@
+/**
+  date : 2016-05-16
+  author : sailing
+  fun : 程序入口
+
+**/
+
 import React from 'react'
 import { Link, browserHistory } from 'react-router'
+import Container from './container'
+import Left from './left'
 
-export default function App({ children }) {
-  return (
-    <div>
-      <header>
-        Links:
-        {' '}
-        <Link to="/">Home</Link>
-        {' '}
-        <Link to="/foo">Foo</Link>
-        {' '}
-        <Link to="/bar">Bar</Link>
-        {' '}
-        <Link to="/set">set</Link>
-      </header>
+export default function App({children}){
+    return (
       <div>
-        <button onClick={() => browserHistory.push('/foo')}>Go to /foo</button>
+        <Left chd='' />
+        <Container chd={children} />
       </div>
-      <div style={{ marginTop: '1.5em' }}>{children}</div>
-    </div>
-  )
+    )
 }

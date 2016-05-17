@@ -16,15 +16,14 @@ module.exports = {
     },{
       test:/\.css$/,
       loader:'style!css'
+    },{
+      test:/\.less$/,
+      loader:'style!css!less'
     }]
   }
 }
 
 
-
-// This will make the redux-simpler-router module resolve to the
-// latest src instead of using it from npm. Remove this if running
-// outside of the source.
 var src = path.join(__dirname, '..', '..', 'src')
 var fs = require('fs')
 if (fs.existsSync(src)) {
