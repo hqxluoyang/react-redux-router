@@ -6,7 +6,9 @@ class Leftt extends Component {
 	render () {
 		const {chd} = this.props
 		return (
-			<Linkto />
+			<div className="left-panel">
+				<Linkto />
+			</div>
 		)
 	}
 }

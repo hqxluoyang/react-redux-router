@@ -1,20 +1,38 @@
 import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
-import { increase, decrease } from '../actions/count'
-import Config from '../services/config'
+import { increase, decrease } from '../../actions/count'
+import Config from '../../services/config'
 
 
 class Home extends Component {
     
     constructor(props) {
       super(props)
-    //  this.handleChange = this.handleChange.bind(this)
-     // this.handleRefreshClick = this.handleRefreshClick.bind(this)
+      const bus = Config.eventBus ;
       console.log("dfdfdffeeeee:" , this , this.homeTest)
-      Config.eventBus.on('homeTest' , this.homeTest.bind(this))
-      setTimeout(function(){
-        Config.eventBus.emit('homeTest' , {val:4})
-      } , 1000)
+      bus.on('homeTest' , this.homeTest.bind(this))
+      /*
+       this.router.setRouteLeaveHook(
+      this.props.route,
+      this.routerWillLeave
+    )
+    */
+    }
+
+    componentWillMount () {
+     // alert("componentWillMount")
+    }
+
+    componentDidMount () {
+     // alert("componentDidMount")
+    }
+
+    componentWillUnmount () {
+      //alert("componentWillUnmount")
+    }
+
+    routerWillLeave (nextLocation) {
+      alert("nextLocation")
     }
 
     homeTest (data) {
@@ -38,6 +56,6 @@ class Home extends Component {
 
 export default connect(
  // console.log("hello world")
-  state => ({ number: state.count.number }),
+  state => ({ number: state.count.number ,router:state.routing }),
   { increase, decrease }
 )(Home)
