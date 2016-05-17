@@ -17,7 +17,7 @@ const reducer = combineReducers({
 })
 
 const store = createStore(
-  reducer,
+  reducer
   //DevTools.instrument()
  // applyMiddleware(reducer)
 )
