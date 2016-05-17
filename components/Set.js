@@ -3,13 +3,20 @@ import {connect} from 'react-redux'
 import {set_green , set_red} from '../actions/set'
 import main from  '../main.css'
 
+
+
 function hset ({val , routing ,  set_green , set_red}) {
-	console.log("routing:" , routing)
+	function set_state() {
+		setTimeout(function(){
+			set_red()
+		} , 2000)
+	}
+
 	return (
 		<div>
 			<p>{val}</p>
 			<p >hhhhhhhhhhhhhhhhhhhh</p>
-			<button onClick={()=>set_red()}>red</button>
+			<button onClick={()=>set_state()}>red</button>
 			<button onClick={()=>set_green()}>green</button>
 		</div>
 	)

@@ -2,7 +2,8 @@
 import React , {Component , PropTypes} from 'react'
 import ReactDOM from 'react-dom'
 import { createStore, combineReducers  , applyMiddleware} from 'redux'
-import { Provider } from 'react-redux'
+import { Provider} from 'react-redux'
+import thunk from 'redux-thunk'
 import { Router, Route, IndexRoute, hashHistory } from 'react-router'
 import { syncHistoryWithStore, routerReducer } from 'react-router-redux'
 //import DevTools from './devTools'
@@ -16,11 +17,20 @@ const reducer = combineReducers({
   routing: routerReducer
 })
 
+const middleware = [thunk];
+
+const finalCreateStore = applyMiddleware(...middleware)(createStore);
+
+const store = finalCreateStore(reducer);
+
+/*
 const store = createStore(
   reducer
   //DevTools.instrument()
  // applyMiddleware(reducer)
 )
+
+*/
 const history = syncHistoryWithStore(hashHistory, store)
 
 class Approuter extends Component {
