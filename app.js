@@ -6,7 +6,7 @@ import { Provider} from 'react-redux'
 import thunk from 'redux-thunk'
 import { Router, Route, IndexRoute, hashHistory } from 'react-router'
 import { syncHistoryWithStore, routerReducer } from 'react-router-redux'
-//import DevTools from './devTools'
+import DevTools from './devTools'
 
 import * as reducers from './reducers'
 import { App, Home, Foo, Bar ,Set} from './components'
@@ -46,7 +46,6 @@ class Approuter extends Component {
                 <Route path="set" component={Set}/>
               </Route>
             </Router>
-
           </div>  
          </Provider>  
       )
