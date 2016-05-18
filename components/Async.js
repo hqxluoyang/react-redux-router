@@ -6,6 +6,7 @@
 
 import React , {Component , ProtoTypes} from 'react'
 import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
 
 import {getFetch , add_item} from '../actions/fetch'
 
@@ -24,22 +25,23 @@ class AsyncApp extends Component {
 	}
 
 	getFetch () {
-		const { dispatch, fetchs  , add_item} = this.props
+		const { dispatch, fetchs} = this.props
 		console.log("dispatch, fetchs :" , this.props)
 		dispatch(getFetch(fetchs))
 	}
 
-	add_item () {
+	_add_item () {
 		const {add_item} = this.props
 		var a={id:'yui'}
+		console.log("yyyyyyyyyyyyyyyy")
 		add_item(a)
 	}
 
 	render () {
 		const {fetchs , dispatch , add_item} = this.props
 		
-		const item = fetchs.items.map(function(item){
-			return <div>{item.id}</div>
+		const item = fetchs.items.map(function(item , index){
+			return <div key={index}>{item.id}</div>
 		})
 		
 		console.log("fetchs.items:" , fetchs.items , add_item)
@@ -47,7 +49,7 @@ class AsyncApp extends Component {
 			<div>
 				{fetchs.number} <br/>
 				<button onClick = {this.getFetch.bind(this)}>fetch</button>
-				<button onClick = {this.add_item.bind(this)}>add_item</button>
+				<button onClick = {this._add_item.bind(this)}>add_item</button>
 				{item}		
 				
 			</div>
@@ -59,6 +61,21 @@ AsyncApp.propTypes = {
 	
 }
 
+function mapStateToProps (state) {
+	
+	return {
+		fetchs:state.fetch
+	}
+}
 
-export default connect(state => ({fetchs:state.fetch}) , {add_item})(AsyncApp)
+function mapDispatchToProps (dispatch) {
+
+	return {
+		add_item: bindActionCreators(add_item , dispatch),
+		dispatch
+	}
+}
+
+
+export default connect(mapStateToProps , mapDispatchToProps)(AsyncApp)
 

@@ -44,7 +44,10 @@ function fetchPosts (text) {
 		return fetch(url)
 				.then(response => response.json())
 				.then(json =>{
+					
+					//var js = JSON.parse(json)
 					console.log("json xxxxxxxxxxx:" , json)
+					var json = {id:8888888888888888}
 					dispatch(fetchSucc(json))
 				} )
 				.catch(function(err){

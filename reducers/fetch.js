@@ -9,15 +9,16 @@ var initState = {
 export default function fetchDataState (state = initState , actions) {
 	switch (actions.type){
 		case 'FETCH_START' :
-			var old = [...state]
-				old.fetch = 'starting'
-			return 
+			return Object.assign({} , state , {
+				fetch : actions.fetch
+			})
+	
 			break
 		case 'FETCH_SUCC':
-			var old = [...state] ;
-				old.fetch = 'SUCC';
-				old.items = actions.items;
-			return old
+			console.log("fetch succ : " , actions.items)
+			return Object.assign({} , state , {
+				items : [actions.items]
+			})
 			break ;
 		case 'FETCH_ERR':
 			var old = [...state] ;
