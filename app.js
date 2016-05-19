@@ -6,7 +6,8 @@ import { Provider} from 'react-redux'
 import thunk from 'redux-thunk'
 import { Router, Route, IndexRoute, hashHistory } from 'react-router'
 import { syncHistoryWithStore, routerReducer } from 'react-router-redux'
-import DevTools from './devTools'
+//import DevTools from './devTools'
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
 import * as reducers from './reducers'
 import { App, Home, Foo, Bar ,Set} from './components'
@@ -37,16 +38,18 @@ class Approuter extends Component {
     render () {
       return (
          <Provider store={store}>
-          <div>
-            <Router history={history}>
-              <Route path="/" component={App}>
-                <IndexRoute component={Home}/>
-                <Route path="foo" component={Foo}/>
-                <Route path="bar" component={Bar}/>
-                <Route path="set" component={Set}/>
-              </Route>
-            </Router>
-          </div>  
+          <MuiThemeProvider>
+            <div>
+              <Router history={history}>
+                <Route path="/" component={App}>
+                  <IndexRoute component={Home}/>
+                  <Route path="foo" component={Foo}/>
+                  <Route path="bar" component={Bar}/>
+                  <Route path="set" component={Set}/>
+                </Route>
+              </Router>
+            </div>
+          </MuiThemeProvider>  
          </Provider>  
       )
     }
