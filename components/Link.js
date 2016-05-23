@@ -9,14 +9,15 @@
 */
 
 import React , {Component , PropTypes} from 'react'
-import { Link, browserHistory } from 'react-router'
+import { Link, browserHistory , IndexLink} from 'react-router'
 require("../css/link.less")
 
 class Linkto extends Component {
 	render () {
 		return (
 			<div className="contextMain">
-				<p><Link activeClassName="linkActive" to="/">Home</Link></p>
+				<IndexLink activeClassName="linkActive" to="/">Home</IndexLink>
+
 				<p><Link activeClassName="linkActive" to="/foo">列表1</Link></p>
 				<p><Link activeClassName="linkActive" to="/bar">列表2</Link></p>
 				<p><Link activeClassName="linkActive" to="/set">配置</Link></p>
