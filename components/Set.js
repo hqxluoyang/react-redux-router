@@ -3,7 +3,6 @@ import {connect} from 'react-redux'
 import {set_green , set_red} from '../actions/set'
 import main from  '../main.css'
 
-import AsyncApp from './Async'
 
 
 function hset ({val , routing ,fetch ,  set_green , set_red}) {
@@ -19,8 +18,6 @@ function hset ({val , routing ,fetch ,  set_green , set_red}) {
 			<p >hhhhhhhhhhhhhhhhhhhh</p>
 			<button onClick={()=>set_state()}>red</button>
 			<button onClick={()=>set_green()}>green</button>
-
-			<AsyncApp />
 		</div>
 	)
 }

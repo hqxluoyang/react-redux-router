@@ -29,7 +29,7 @@ class Container extends Component {
 	render () {
 		const {chd} = this.props
 		return (
-			<div className='container'>
+			<div className='_container'>
 				<Header />
 				<div style={divStyle()}>{chd}</div>
 			</div>

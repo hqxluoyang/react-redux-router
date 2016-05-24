@@ -6,13 +6,21 @@
 
 import React , {Component , PropTypes} from 'react'
 import Tooblbar from './toolbar'
+import MainCanvas from './mainCanvas'
+import DrawBox from './DrawBox'
+import DrawLine from './DrawLine'
+
+require('./feedback.less')
 
 class Feedback extends Component {
 	render () {
 		return (
-			<div>
+			<div className='_feedbackCon'>
 				<Tooblbar />
-			hello world my name is sailing
+				<MainCanvas>
+					<DrawBox />
+					<DrawLine />
+				</MainCanvas>
 			</div>
 		)
 	}
