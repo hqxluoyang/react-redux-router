@@ -1,5 +1,5 @@
 export App from './App'
 export Home from './Home/Home'
-export Foo from './Foo'
+export {Feedback} from './feedback/index'
 export Bar from './Bar'
 export Set from './Set'

@@ -10,7 +10,7 @@ import { syncHistoryWithStore, routerReducer } from 'react-router-redux'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
 import * as reducers from './reducers'
-import { App, Home, Foo, Bar ,Set} from './components'
+import { App, Home, Feedback, Bar ,Set} from './components'
 
 
 const reducer = combineReducers({
@@ -35,7 +35,7 @@ class Approuter extends Component {
               <Router history={history}>
                 <Route path="/" component={App}>
                   <IndexRoute component={Home}/>
-                  <Route path="foo" component={Foo}/>
+                  <Route path="foo" component={Feedback}/>
                   <Route path="bar" component={Bar}/>
                   <Route path="set" component={Set}/>
                 </Route>

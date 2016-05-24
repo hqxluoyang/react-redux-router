@@ -18,7 +18,7 @@ class Linkto extends Component {
 			<div className="contextMain">
 				<IndexLink activeClassName="linkActive" to="/">Home</IndexLink>
 
-				<p><Link activeClassName="linkActive" to="/foo">feedbackd</Link></p>
+				<p><Link activeClassName="linkActive" to="/foo">feedback</Link></p>
 				<p><Link activeClassName="linkActive" to="/bar">列表2</Link></p>
 				<p><Link activeClassName="linkActive" to="/set">配置</Link></p>
 			</div>
