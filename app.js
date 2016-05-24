@@ -24,14 +24,6 @@ const finalCreateStore = applyMiddleware(...middleware)(createStore);
 
 const store = finalCreateStore(reducer);
 
-/*
-const store = createStore(
-  reducer
-  //DevTools.instrument()
- // applyMiddleware(reducer)
-)
-
-*/
 const history = syncHistoryWithStore(hashHistory, store)
 
 class Approuter extends Component {

@@ -9,7 +9,7 @@ class Home extends Component {
     constructor(props) {
       super(props)
       const bus = Config.eventBus ;
-      console.log("dfdfdffeeeee:" , this , this.homeTest)
+     
       bus.on('homeTest' , this.homeTest.bind(this))
       /*
        this.router.setRouteLeaveHook(
