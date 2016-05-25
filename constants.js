@@ -25,7 +25,7 @@ export const ADD_ITEM = 'ADD_ITEM'       //天假列表项目
 
 export const ADD_MODULE = 'ADD_MODULE'               //画布上模块的添加
 export const DEL_MODULE = 'DEL_MODULE'				 //画布上删除模块
-export const CHANGE_MODULE = 'MOV_MODULE'				 //画布上移动模块
+export const CHANGE_MODULE = 'CHANGE_MODULE'				 //画布上移动模块
 
 
 

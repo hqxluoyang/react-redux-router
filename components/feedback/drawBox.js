@@ -20,7 +20,7 @@ class DrawBox extends Component {
 	mousedown (index , item) {
 		const that = this ;
 		return function (e){
-			console.log("modMove:" , modMove , that.props)
+			console.log("modMove:" , that.props.changeMod)
 			modMove.startMove(index , item , that.props.changeMod);
 		}
 	}

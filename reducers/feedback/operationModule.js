@@ -17,7 +17,7 @@
 	}]
 ****/
 
-import { ADD_MODULE , DEL_MODULE , MOV_MODULE } from '../../constants'
+import { ADD_MODULE , DEL_MODULE , CHANGE_MODULE } from '../../constants'
 
 const initState = [{
 	code : 'kjfasdlkfjiefls',
@@ -34,7 +34,7 @@ const initState = [{
 	height: 100,
 	bg : 'red'
 },{
-	code : 'kjfasdlkfjiefls',
+	code : 'kjfasdlkdfgdfgfjiefls',
 	left :  500,
 	top : 400,
 	width : 100,
@@ -49,20 +49,30 @@ export default function operationModel (state = initState , actions) {
 				return [...state , actions.data]
 				break
 		case 'DEL_MODULE' :
-				
-				break
-		case 'CHANGE_MODULE' :
-				var code = actions.mod.code ;
+				var code = actions.data.code ;
 
 				for(var i=0 ; i<state.length ; i++){
 					if(code == state[i]['code']){
-
+						break ;
 					}
 				}
-				alert("dfe")
-				return Object.assign({}, state)
-
+				var item = [...state]
+				item.splice(i , 1);
+				return item	
 				break
+		case 'CHANGE_MODULE' :
+				var code = actions.data.code ;
+
+				for(var i=0 ; i<state.length ; i++){
+					if(code == state[i]['code']){
+						break ;
+					}
+				}
+				var item = [...state]
+				item[i] = actions.data ;
+				return item
+				break
+
 			default:
 
 				return state ;					
