@@ -7,7 +7,7 @@ import thunk from 'redux-thunk'
 import { Router, Route, IndexRoute, hashHistory } from 'react-router'
 import { syncHistoryWithStore, routerReducer } from 'react-router-redux'
 //import DevTools from './devTools'
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+//import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
 import * as reducers from './reducers'
 import { App, Home, Feedback, Bar ,Set} from './components'
@@ -30,7 +30,6 @@ class Approuter extends Component {
     render () {
       return (
          <Provider store={store}>
-          <MuiThemeProvider>
             <div>
               <Router history={history}>
                 <Route path="/" component={App}>
@@ -40,8 +39,7 @@ class Approuter extends Component {
                   <Route path="set" component={Set}/>
                 </Route>
               </Router>
-            </div>
-          </MuiThemeProvider>  
+            </div>  
          </Provider>  
       )
     }

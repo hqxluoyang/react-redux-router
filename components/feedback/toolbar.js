@@ -6,13 +6,19 @@
 
 import React , {Component , Prototype} from 'react'
 import { Button } from 'react-bootstrap'
+import Config from '../../services/config'
 require('./toolbar.less')
 
 class Toolbar extends Component {
+
+	click () {
+		Config.eventBus.emit('msgAddmodel')
+	}
+
 	render (){
 		return (
 			<div className="_toolbar">
-				 <Button>Default</Button>
+				 <Button className="_buttonPosition" onClick={this.click}>Default</Button>
 				<hr/>
 			</div>
 		)

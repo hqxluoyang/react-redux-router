@@ -12,7 +12,7 @@ import eventBus from './services/eventBus'
 import Approuter from './app'
 
 Config.eventBus = new eventBus();    // 生成Bus对象
-
+console.log("config.evetnBus : " , Config.eventBus)
 ReactDOM.render(
   <Approuter />,
   document.getElementById('mount')

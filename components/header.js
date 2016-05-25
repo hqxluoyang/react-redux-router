@@ -12,7 +12,7 @@ class header extends Component {
 	render () {
 		return (
 			<div className="header_com">
-				ui
+				闪传React
 			</div>
 		)
 	}

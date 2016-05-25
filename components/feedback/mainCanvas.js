@@ -6,6 +6,8 @@
 
 import React , {Component , Prototype} from 'react'
 import Tools from '../../services/tools'
+import DrawBox from './DrawBox'
+import DrawLine from './DrawLine'
 
 require('./mainCanvas.less')
 
@@ -14,15 +16,20 @@ var divStyle = function () {
 	return {
 		height:h,
 		width:'100%',
-		background:'#898989'
+		background:'#e6e6e6'
 	}
 }
 
 class MainCanvas extends Component {
 	render () {
+		const { box , changeMod } = this.props
 		return (
 			<div className="mainCanvas" style={divStyle()}>
-				
+				<DrawBox 
+					box={box}
+					changeMod = {changeMod}
+				/>
+				<DrawLine  />
 			</div>
 		)
 	}
