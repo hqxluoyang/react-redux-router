@@ -7,6 +7,7 @@ class Hset extends Component {
 	
 	componentWillUpdate () {
 		console.log("start componentWillUpdate :...........:" , this.props.val)
+		console.log("jquery ........................:" , $)
 	}
 
 	componentWillReceiveProps () {
@@ -19,7 +20,6 @@ class Hset extends Component {
 		return (
 			<div>
 				<p>{val}</p>
-				<p >hhhhhhhhhhhhhhhhhhhh</p>
 				<button onClick={()=>set_red()}>red</button>
 				<button onClick={()=>set_green()}>green</button>
 			</div>

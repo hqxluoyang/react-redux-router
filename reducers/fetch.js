@@ -15,7 +15,7 @@ export default function fetchDataState (state = initState , actions) {
 	
 			break
 		case 'FETCH_SUCC':
-			console.log("fetch succ : " , actions.items)
+		
 			return Object.assign({} , state , {
 				items : [actions.items]
 			})
