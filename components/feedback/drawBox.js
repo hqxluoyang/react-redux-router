@@ -9,8 +9,34 @@ import modMove from './modMov'
 
 require('./drawBox.less')
 
+function getBoxStyle (item) {
+	return {
+			left : item.left + 'px',
+			top : item.left + 'px',
+			width : item.width + 'px',
+			height : item.height + 'px',
+			position : 'absolute',
+			background:item.bg
+	}
+}
+
 class DrawBox extends Component {
+
+	constructor(props){
+		super(props)
+		this.initBus();
+		this.getBoxList();
+	}
+
+	getBoxList () {
+		const { dispatch ,  getModeList} = this.props
+		dispatch(getModeList())
+	}
 	
+	initBus () {
+
+	}
+
 	clickMod (index , item) {
 		return function(e){
 			console.log("index : " , index , item , e)
@@ -20,29 +46,17 @@ class DrawBox extends Component {
 	mousedown (index , item) {
 		const that = this ;
 		return function (e){
-			console.log("modMove:" , that.props.changeMod)
 			modMove.startMove(index , item , that.props.changeMod);
 		}
 	}
 
 	render () {
-		const { box , changeMod} = this.props
+		const { box , changeMod , dispatch , getModeList} = this.props
 		const that = this ;
 		const items = box.map(function(item , index){
 
-			function setStyle(item){
-				return {
-					left : item.left + 'px',
-					top : item.left + 'px',
-					width : item.width + 'px',
-					height : item.height + 'px',
-					position : 'absolute',
-					background:item.bg
-				}
-			}
-			console.log("index : " , index)
 			return (
-				<div className="_modStyle" onMouseDown={that.mousedown.call(that , index , item)} key={index} style={setStyle(item)} onClick={that.clickMod.call(that , index , item)}>
+				<div className="_modStyle" onMouseDown={that.mousedown.call(that , index , item)} key={index} style={getBoxStyle(item)} onClick={that.clickMod.call(that , index , item)}>
 					{index}
 				</div>
 			)

@@ -27,6 +27,10 @@ export const ADD_MODULE = 'ADD_MODULE'               //画布上模块的添加
 export const DEL_MODULE = 'DEL_MODULE'				 //画布上删除模块
 export const CHANGE_MODULE = 'CHANGE_MODULE'				 //画布上移动模块
 
+export const GETLIST_START = 'GETLIST_START'                 //开始获取模块列表
+export const GETLIST_SUCC = 'GETLIST_SUCC'                   //获取模块成功
+export const GETLIST_ERROR = 'GETLIST_ERROR'                  //获取列表失败
+
 
 
 

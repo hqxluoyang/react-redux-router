@@ -4,7 +4,7 @@
 	fun : 验证middware
 ****/
 
-import { FETCH_START, FETCH_SUCC , FETCH_ERR , ADD_ } from '../constants'
+import { FETCH_START, FETCH_SUCC , FETCH_ERR , ADD_ITEM } from '../constants'
 
 //import fetch from 'isomorphic-fetch'
 import 'whatwg-fetch'   //兼容到 ie9

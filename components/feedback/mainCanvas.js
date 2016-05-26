@@ -8,6 +8,9 @@ import React , {Component , Prototype} from 'react'
 import Tools from '../../services/tools'
 import DrawBox from './DrawBox'
 import DrawLine from './DrawLine'
+import { bindActionCreators } from 'redux'
+import {connect} from 'react-redux'
+import {change_module , getModeList} from '../../actions/operationModel'
 
 require('./mainCanvas.less')
 
@@ -20,19 +23,44 @@ var divStyle = function () {
 	}
 }
 
+
 class MainCanvas extends Component {
+
 	render () {
-		const { box , changeMod } = this.props
+		const { operModule , change_module , dispatch} = this.props
 		return (
 			<div className="mainCanvas" style={divStyle()}>
 				<DrawBox 
-					box={box}
-					changeMod = {changeMod}
+					box={operModule}
+					changeMod = {change_module}
+					dispatch = {dispatch}
+					getModeList = {getModeList}
 				/>
-				<DrawLine  />
+				<DrawLine    
+				/>
 			</div>
 		)
 	}
 }
 
+function mapStateToProps(state) {        //主要是给这个模块传递store状态
+	return {
+		operModule:state.operModule
+	}
+}
+
+function mapDispatchToProps(dispatch) {
+	return {
+		change_module : bindActionCreators(change_module , dispatch),
+		dispatch
+	}
+}
+
 export default MainCanvas
+
+export default connect(
+  state => (mapStateToProps),
+  mapDispatchToProps
+)(MainCanvas)
+
+//export default connect ( state => (mapStateToProps) ,  mapDispatchToProps)(MainCanvas)

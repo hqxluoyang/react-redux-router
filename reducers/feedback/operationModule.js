@@ -18,7 +18,7 @@
 ****/
 
 import { ADD_MODULE , DEL_MODULE , CHANGE_MODULE } from '../../constants'
-
+/*
 const initState = [{
 	code : 'kjfasdlkfjiefls',
 	left :  100,
@@ -41,8 +41,8 @@ const initState = [{
 	height: 100,
 	bg : 'red'
 }];
-
-export default function operationModel (state = initState , actions) {
+*/
+export default function operationModel (state = [] , actions) {
 	console.log("actions : " , actions)
 	switch (actions.type){
 		case 'ADD_MODULE' :
@@ -72,6 +72,9 @@ export default function operationModel (state = initState , actions) {
 				item[i] = actions.data ;
 				return item
 				break
+		case 'GETLIST_SUCC' :          //获取box列表成功
+				console.log("actions.itme:" , actions.item , actions)
+				return actions.item 	
 
 			default:
 
