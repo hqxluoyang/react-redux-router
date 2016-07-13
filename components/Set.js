@@ -7,7 +7,6 @@ class Hset extends Component {
 	
 	componentWillUpdate () {
 		console.log("start componentWillUpdate :...........:" , this.props.val)
-		console.log("jquery ........................:" , $)
 	}
 
 	componentWillReceiveProps () {

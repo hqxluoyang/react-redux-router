@@ -10,9 +10,11 @@ import React , {Component , PropTypes} from 'react'
 import Config from './services/config'
 import eventBus from './services/eventBus'
 import Approuter from './app'
+import WindowResize  from './services/windowResize'
 
 Config.eventBus = new eventBus();    // 生成Bus对象
-console.log("config.evetnBus : " , Config.eventBus)
+WindowResize.init();
+
 ReactDOM.render(
   <Approuter />,
   document.getElementById('mount')

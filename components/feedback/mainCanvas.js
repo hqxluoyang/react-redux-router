@@ -10,11 +10,13 @@ import DrawBox from './DrawBox'
 import DrawLine from './DrawLine'
 import { bindActionCreators } from 'redux'
 import {connect} from 'react-redux'
+import Config from '../../services/config'
 import {change_module , getModeList} from '../../actions/operationModel'
 
 require('./mainCanvas.less')
 
 var divStyle = function () {
+	console.log("窗口 :" , Tools.getPageHeight())
 	const h = (Tools.getPageHeight() - 90) + 'px';
 	return {
 		height:h,
@@ -25,6 +27,15 @@ var divStyle = function () {
 
 
 class MainCanvas extends Component {
+	
+	constructor (props) {
+		super (props)
+		Config.eventBus.on('windowResize' , this.resize.bind(this))
+	}
+
+	resize () {
+		this.setState({});
+	}
 
 	render () {
 		const { operModule , change_module , dispatch} = this.props
@@ -45,7 +56,7 @@ class MainCanvas extends Component {
 
 function mapStateToProps(state) {        //主要是给这个模块传递store状态
 	return {
-		operModule:state.operModule
+		operModule:state.operModule 
 	}
 }
 
