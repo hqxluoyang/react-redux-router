@@ -10,17 +10,14 @@
 
 import React , {Component , PropTypes} from 'react'
 import { Link, browserHistory , IndexLink} from 'react-router'
+import TreePanel from './treeNode/treePanel'
 require("../css/link.less")
 
 class Linkto extends Component {
 	render () {
 		return (
 			<div className="contextMain">
-				<IndexLink activeClassName="linkActive" to="/">Home</IndexLink>
-
-				<p><Link activeClassName="linkActive" to="/foo">feedback</Link></p>
-				<p><Link activeClassName="linkActive" to="/bar">列表2</Link></p>
-				<p><Link activeClassName="linkActive" to="/set">配置</Link></p>
+				<TreePanel />
 			</div>
 		)
 	}

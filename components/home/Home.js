@@ -41,7 +41,6 @@ class Home extends Component {
 
     render () {
         const {number , increase , decrease} = this.props
-        console.log("number :" , number , increase , decrease , this.props)
         return (
           <div>
             Some state changes:

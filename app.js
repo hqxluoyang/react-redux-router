@@ -36,7 +36,9 @@ class Approuter extends Component {
                   <IndexRoute component={Home}/>
                   <Route path="foo" component={Feedback}/>
                   <Route path="bar" component={Bar}/>
-                  <Route path="set" component={Set}/>
+                  <Route path="set" component={Set}>
+                    <Route path="Message/:id" component={Feedback}/>
+                  </Route>
                 </Route>
               </Router>
             </div>  
