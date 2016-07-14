@@ -1,19 +1,6 @@
 import React, { Component, PropTypes } from 'react'
+import { Link, browserHistory , IndexLink} from 'react-router'
 import { connect } from 'react-redux'
-
-var dataLeft =[{
-  path:'home',
-  name:'image',
-  next :[{
-    path:'path1',
-    name : 'pic',
-    next:[]
-  }]
-},{
-  path:'foo',
-  name:'feedback',
-  next:[]
-}]
 
 class Treepanel extends Component {
     
@@ -46,9 +33,35 @@ class Treepanel extends Component {
     render () {
 
         var data = [{
-          name:1,
-          next:[{name:4},{name:999}]
-        }]
+          name:'home',
+          icon:'../image/fly.png',
+          path:'/',
+          next:[{name:'alerts',
+                 icon:'../image/desktop.png',
+                 path:'/foo'
+                },{name:'Messages',
+                  path:'/bar',
+                 icon:'../image/fly.png'
+                }]
+        },
+        { name:'照片',
+          icon:'../image/desktop.png',
+          next:[{name:'Comments' ,
+              icon:'../image/fly.png',
+              next:[{name:666,
+                    icon:'../image/fly.png',
+                    path:'/set',
+                    next:[]}]},
+
+                    {name:999,
+                       path:'/set',
+                      icon:'../image/fly.png'
+                    }
+
+
+                    ]}
+
+        ]
 
         function clickMod(){
             return function(){
@@ -58,42 +71,56 @@ class Treepanel extends Component {
 
         function styleName(){
           return {
-            background:'green',
             color:'red',
-            marginBottom:'10px'
+          //  background:'#525252',
+            borderBottom:'1px solid gray',
+            marginBottom:'0px'
           }
         }
 
          function marginL(i){
+          console.log(i)
           return {
-            marginLeft:i * 10 + 'px',
             color:'red',
-            marginBottom:'10px'
+            position:"relative",
+            marginBottom:'0px'
           }
         }
 
-        var navIndex = 0;
+        function divLeft () {
+          return {
+            marginLeft:"30px"
+          }
+        }
+
+        function getPath (data , index) {
+          console.log(data, data[index].path)
+          var path = data[index].path || '';
+
+          return path;
+        }
 
         function createTreeDate(data){  
               if(data){
                   let lis=[];
-                  navIndex ++ ;
+                  
                   for(let index in data){
-                      console.log("index xx:" , navIndex)
+                     
                       let childrenDiv = null;
 
                       if(data[index].next){
                           let next= createTreeDate(data[index].next);
-                          childrenDiv=<div onClick={clickMod()}>{next}</div>;
+                          childrenDiv=<div style={divLeft()} onClick={clickMod()}>{next}</div>;
                       }
 
-                      let li = <li style={styleName()} key={index}>
-                          <div style={marginL(navIndex)}>{data[index].name}</div>
+                      let li = <li style={marginL(index)}  key={index}>
+                          <div style={styleName()}><img src={data[index].icon} /><Link activeClassName="linkActive" to={getPath(data , index)}>{data[index].name}</Link></div>
                           {childrenDiv}
                       </li>;
 
                       lis.push(li);
                   }
+
                   return <ul>{lis}</ul>
               }
 
@@ -103,8 +130,7 @@ class Treepanel extends Component {
         
         return (
           <div>
-              {treeHtml}
-             
+              {treeHtml} 
           </div>
         )
     }
