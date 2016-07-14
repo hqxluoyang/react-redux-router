@@ -34,7 +34,8 @@ export const GETLIST_ERROR = 'GETLIST_ERROR'                  //获取列表失�
 
 /************左侧树列表操作********************/
 
-export const GET_TREE = 'GET_TREE'   
+export const GET_TREE = 'GET_TREE'
+export const CHANGE_STATE = 'CHANGE_STATE'   
 
 
 

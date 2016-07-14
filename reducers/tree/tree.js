@@ -4,7 +4,7 @@
 	fun:"树列表实现"
 ***/
 
-import { GET_TREE } from '../../constants'
+import { GET_TREE , CHANGE_STATE} from '../../constants'
 
 var tree = [{
           name:'home',
@@ -54,6 +54,9 @@ var arr = initialState.treeList
 export default function getTree (state = tree , action) {
 	if(action == GET_TREE){
 		return state ;
+	}else if(action == CHANGE_STATE){
+		
+		return state
 	}else {
 		return state;
 	}
