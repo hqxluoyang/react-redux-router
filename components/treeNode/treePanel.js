@@ -1,6 +1,9 @@
 import React, { Component, PropTypes } from 'react'
 import { Link, browserHistory , IndexLink} from 'react-router'
+import { getTreeState } from '../../actions/tree/action_tree'
 import { connect } from 'react-redux'
+
+require ("../../css/treePanel.less")
 
 class Treepanel extends Component {
     
@@ -32,65 +35,16 @@ class Treepanel extends Component {
 
     render () {
 
-        var data = [{
-          name:'home',
-          icon:'../image/fly.png',
-          path:'/',
-          next:[{name:'alerts',
-                 icon:'../image/desktop.png',
-                 path:'/foo'
-                },{name:'Messages',
-                  path:'/bar',
-                 icon:'../image/fly.png'
-                }]
-        },
-        { name:'照片',
-          icon:'../image/desktop.png',
-          next:[{name:'Comments' ,
-              icon:'../image/fly.png',
-              next:[{name:666,
-                    icon:'../image/fly.png',
-                    path:'/set',
-                    next:[]}]},
-
-                    {name:999,
-                       path:'/set',
-                      icon:'../image/fly.png'
-                    }
-
-
-                    ]}
-
-        ]
-
-        function clickMod(){
+        function clickMod(data , index){
             return function(){
-              alert("hhhhhhhhh")
+              console.log("data vvvvvvvvvvvv :" , data , index , data[index])
             }
         }
 
-        function styleName(){
-          return {
-            color:'red',
-          //  background:'#525252',
-            borderBottom:'1px solid gray',
-            marginBottom:'0px'
-          }
-        }
-
-         function marginL(i){
-          console.log(i)
-          return {
-            color:'red',
-            position:"relative",
-            marginBottom:'0px'
-          }
-        }
-
-        function divLeft () {
-          return {
-            marginLeft:"30px"
-          }
+        function clickList () {
+            return function () {
+              alert("li")
+            }
         }
 
         function getPath (data , index) {
@@ -100,21 +54,23 @@ class Treepanel extends Component {
           return path;
         }
 
+        const {tree} = this.props
+      
         function createTreeDate(data){  
               if(data){
                   let lis=[];
-                  
+
                   for(let index in data){
                      
                       let childrenDiv = null;
 
                       if(data[index].next){
                           let next= createTreeDate(data[index].next);
-                          childrenDiv=<div style={divLeft()} onClick={clickMod()}>{next}</div>;
+                          childrenDiv=<div className="divLeft" >{next}</div>;
                       }
 
-                      let li = <li style={marginL(index)}  key={index}>
-                          <div style={styleName()}><img src={data[index].icon} /><Link activeClassName="linkActive" to={getPath(data , index)}>{data[index].name}</Link></div>
+                      let li = <li key={index}>
+                          <div className="leafli" onClick={clickMod(data , index)} ><img src={data[index].icon} /><Link activeClassName="linkActive" to={getPath(data , index)}>{data[index].name}</Link></div>
                           {childrenDiv}
                       </li>;
 
@@ -126,10 +82,10 @@ class Treepanel extends Component {
 
           }
 
-          let treeHtml =createTreeDate(data);
+          let treeHtml =createTreeDate(tree);
         
         return (
-          <div>
+          <div className="treePanel">
               {treeHtml} 
           </div>
         )
@@ -137,4 +93,7 @@ class Treepanel extends Component {
 
 }
 
-export default connect()(Treepanel)
+export default connect(
+   state => ({ tree: state.tree ,router:state.routing }),
+  { getTreeState , }
+)(Treepanel)

@@ -32,6 +32,11 @@ export const GETLIST_SUCC = 'GETLIST_SUCC'                   //获取模块成�
 export const GETLIST_ERROR = 'GETLIST_ERROR'                  //获取列表失败
 
 
+/************左侧树列表操作********************/
+
+export const GET_TREE = 'GET_TREE'   
+
+
 
 
 
