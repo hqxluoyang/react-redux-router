@@ -5,8 +5,8 @@
 ***/
 
 import { GET_TREE , CHANGE_STATE} from '../../constants'
-
-var tree = [{
+/*
+var tree1 = [{
           name:'home',
           icon:'../image/fly.png',
           path:'/',
@@ -44,12 +44,56 @@ var tree = [{
 
     ]
 
-var initialState = {
-	treeList:tree
-}
+*/
 
-var arr = initialState.treeList
+var treey= [{
+          name:'home',
+          icon:'../image/fly.png',
+          path:'/',
+          state :'false',
+          component:'App',
+          next:[{
+            name:'Feedback',
+            icon:'../image/fly.png',
+            path:'/foo',
+            state :'false',
+            component:'Feedback'
+          },{
+            name:'Bar',
+            icon:'../image/fly.png',
+            path:'/bar',
+            state :'false',
+            component:'Bar'
+          }]
+        }]
 
+var tree= [{
+          name:'home',
+          icon:'../image/fly.png',
+          path:'/',
+          state :'false',
+          component:'App'
+          },{
+             name:'Feedback',
+            icon:'../image/fly.png',
+            path:'/foo',
+            state :'false',
+            component:'Feedback'
+          },{
+            name:'Bar',
+            icon:'../image/fly.png',
+            path:'',
+            state :'false',
+            component:'Bar',
+            next:[{
+              name:'Feedback',
+              icon:'../image/fly.png',
+              path:'/Set',
+              state :'false',
+              component:'Feedback'
+            }]
+          }
+        ]        
 
 export default function getTree (state = tree , action) {
 	if(action == GET_TREE){

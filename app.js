@@ -4,13 +4,14 @@ import ReactDOM from 'react-dom'
 import { createStore, combineReducers  , applyMiddleware} from 'redux'
 import { Provider} from 'react-redux'
 import thunk from 'redux-thunk'
+import RouterTree from './components/router/routerTree'
 import { Router, Route, IndexRoute, hashHistory } from 'react-router'
 import { syncHistoryWithStore, routerReducer } from 'react-router-redux'
 //import DevTools from './devTools'
 //import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
 import * as reducers from './reducers'
-import { App, Home, Feedback, Bar ,Set} from './components'
+
 
 
 const reducer = combineReducers({
@@ -31,16 +32,7 @@ class Approuter extends Component {
       return (
          <Provider store={store}>
             <div>
-              <Router history={history}>
-                <Route path="/" component={App}>
-                  <IndexRoute component={Home}/>
-                  <Route path="foo" component={Feedback}/>
-                  <Route path="bar" component={Bar}/>
-                  <Route path="set" component={Set}>
-                    <Route path="Message/:id" component={Feedback}/>
-                  </Route>
-                </Route>
-              </Router>
+              <RouterTree history={history} />
             </div>  
          </Provider>  
       )

@@ -1,3 +1,4 @@
+/*
 import React , {Component , Prototype} from 'react'
 import {connect} from 'react-redux'
 import {set_green , set_red} from '../actions/set'
@@ -32,3 +33,11 @@ export default connect(
 	state => ({val:state.set.val , routing:state.routing , fetch:state.fetch}) , {set_green , set_red}
 )(Hset)
 
+*/
+
+
+import React from 'react'
+
+export default function Bar() {
+  return <div>And I am Set!</div>
+}
