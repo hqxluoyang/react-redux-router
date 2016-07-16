@@ -86,41 +86,12 @@ class TreeRouterPanel extends Component {
 
 
         const {tree , history} = this.props
+
+        
         console.log("this.props :" , tree)
-        function createRouterTree(data){  
-              if(data){
-                  let lis=[];
-
-                  for(let index in data){
-                     
-                      let childrenDiv = null;
-
-                    if(data[index].next){  
-                          let next= createRouterTree(data[index].next);
-                          console.log("next data index :" , data , index)
-                           childrenDiv = <Route path={getPath(data , index)} component={getComponent(data , index)}>{next}</Route>
-                      }
-
-                      let li = <Route path={getPath(data , index)} component={getComponent(data , index)} key={index}>
-                          {childrenDiv}
-                      </Route>;
-
-                      lis.push(li);
-                  }
-
-                  //console.log("list :" , lis.toString())
-                  alert(lis)
-                   return lis  
-              }
-
-          }
-
-          let treeRouter =createRouterTree(tree);
        
         return (
-          <div>
-            <Router history={history}><Route path="/" component={App}>{treeRouter}</Route></Router>
-          </div>
+            <div>
         )
     }
 

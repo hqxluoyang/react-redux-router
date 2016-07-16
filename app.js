@@ -27,6 +27,9 @@ const store = finalCreateStore(reducer);
 
 const history = syncHistoryWithStore(hashHistory, store)
 
+
+
+
 class Approuter extends Component {
     render () {
       return (
