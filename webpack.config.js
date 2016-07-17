@@ -7,7 +7,7 @@ module.exports = {
     './main.js'
   ],
   output: {
-    path: path.join(__dirname, 'dist'),
+    path: path.join(__dirname, 'dcms/public'),
     filename: 'bundle.js'
   },
 

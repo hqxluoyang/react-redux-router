@@ -1,6 +1,7 @@
 import React, { Component, PropTypes } from 'react'
+import { bindActionCreators } from 'redux'
 import { Link, browserHistory , IndexLink} from 'react-router'
-import { getTreeState } from '../../actions/tree/action_tree'
+import { getTreeState  , changeTreeState} from '../../actions/tree/action_tree'
 import { connect } from 'react-redux'
 
 require ("../../css/treePanel.less")
@@ -32,12 +33,25 @@ class Treepanel extends Component {
     homeTest (data) {
       console.log("data:" , data , this)
     }
+    /*
+    clickLeaf (path) {
+      alert(path)
+      //const {dispatch , change_state} = this.props
+
+      return function(){
+       // dispatch(change_state(path))
+      }
+      
+    }
+    */
 
     render () {
-
+        
         function clickMod(data , index){
             return function(){
-              console.log("data vvvvvvvvvvvv :" , data , index , data[index])
+             // alert(data[index].path)
+             console.log("changeTreeState :" , dispatch)
+              dispatch(changeTreeState(data[index].path))
             }
         }
 
@@ -54,7 +68,8 @@ class Treepanel extends Component {
           return path;
         }
 
-        const {tree} = this.props
+       
+        const {tree , dispatch} = this.props
       
         function createTreeDate(data){  
               if(data){
@@ -63,8 +78,8 @@ class Treepanel extends Component {
                   for(let index in data){
                      
                       let childrenDiv = null;
-
-                      if(data[index].next){
+                      //console.log("index index : " , index)
+                      if(data[index].next && data[index].state){
                           let next= createTreeDate(data[index].next);
                           childrenDiv=<div className="divLeft" >{next}</div>;
                       }
@@ -72,7 +87,7 @@ class Treepanel extends Component {
                       let li = <li key={index}>
                           <div className="leafli" onClick={clickMod(data , index)} ><img src={data[index].icon} /><Link activeClassName="linkActive" to={getPath(data , index)}>{data[index].name}</Link></div>
                           {childrenDiv}
-                      </li>;
+                      </li>
 
                       lis.push(li);
                   }
@@ -93,7 +108,23 @@ class Treepanel extends Component {
 
 }
 
+function mapStateToProps(state) {      
+  return {
+    tree:state.tree 
+  }
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    changeTreeState : bindActionCreators(changeTreeState , dispatch),
+    dispatch
+  }
+}
+
+
+
 export default connect(
-   state => ({ tree: state.tree ,router:state.routing }),
-  { getTreeState , }
+  state => (mapStateToProps),
+  mapDispatchToProps
 )(Treepanel)
+

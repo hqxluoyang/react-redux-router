@@ -16,19 +16,7 @@ var funHash = {
     '/foo':Feedback,
     '/bar':Bar
 }
-/*
-const rootRoute = {
-  childRoutes: [ {
-    path: '/',
-    component: App,
-    childRoutes: [
-      Home,
-      Feedback,
-      Bar
-    ]
-  } ]
-}
-*/
+
 class TreeRouterPanel extends Component {
     
     constructor(props) {
@@ -59,39 +47,20 @@ class TreeRouterPanel extends Component {
 
     render () {
 
-        function clickMod(data , index){
-            return function(){
-            }
-        }
-
-        function clickList () {
-            return function () {
-              alert("li")
-            }
-        }
-
-        function getPath (data , index) {
-          console.log(data, data[index].path)
-          var path = data[index].path.substr(1) || '/';
-
-          return path;
-        }
-
-        function getComponent (data , index) {
-         
-          var Com = data[index].path;
-         // console.log("component :" , Com , funHash[Com] , funHash)
-          return funHash[Com];
-        }
-
-
         const {tree , history} = this.props
 
-        
-        console.log("this.props :" , tree)
+        const routes = {
+                path: '/',
+                component: App,
+                childRoutes: [
+                  { path: 'home', component: Home },
+                  { path: 'foo', component: Feedback },
+                  { path: 'foo', component: Feedback }
+                ]
+              }
        
         return (
-            <div>
+            <div><Router history={history} routes={routes} /></div>
         )
     }
 

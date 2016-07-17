@@ -71,35 +71,39 @@ var tree= [{
           name:'home',
           icon:'../image/fly.png',
           path:'/',
-          state :'false',
-          component:'App'
+          state :false
           },{
-             name:'Feedback',
+            name:'Feedback',
             icon:'../image/fly.png',
             path:'/foo',
-            state :'false',
-            component:'Feedback'
+            state :false
           },{
             name:'Bar',
             icon:'../image/fly.png',
             path:'',
-            state :'false',
-            component:'Bar',
+            state :false,
+        
             next:[{
               name:'Feedback',
               icon:'../image/fly.png',
-              path:'/Set',
-              state :'false',
-              component:'Feedback'
+              path:'/foo',
+              state :false
+            },{
+              name:'shebei',
+              icon:'../image/fly.png',
+              path:'/foo',  
+              state :false
             }]
           }
         ]        
 
 export default function getTree (state = tree , action) {
-	if(action == GET_TREE){
+  console.log("action :" , action)
+	if(action.type == GET_TREE){
 		return state ;
-	}else if(action == CHANGE_STATE){
-		
+	}else if(action.type == CHANGE_STATE){
+		//var obj = Object.assign(state);
+    alert(action.data)
 		return state
 	}else {
 		return state;
