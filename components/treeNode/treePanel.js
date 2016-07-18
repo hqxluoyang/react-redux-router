@@ -51,7 +51,7 @@ class Treepanel extends Component {
             return function(){
              // alert(data[index].path)
              console.log("changeTreeState :" , dispatch)
-              dispatch(changeTreeState(data[index].path))
+              //dispatch(changeTreeState(data[index].path))
               //that.setState();
             }
         }
