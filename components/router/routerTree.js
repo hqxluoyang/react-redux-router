@@ -49,16 +49,17 @@ class TreeRouterPanel extends Component {
 
         const {tree , history} = this.props
 
+       // console.log("xxxxxxxx:" , eval('Home'))
+
         const routes = {
                 path: '/',
                 component: App,
                 childRoutes: [
                   { path: 'home', component: Home },
-                  { path: 'foo', component: Feedback },
                   { path: 'foo', component: Feedback }
                 ]
               }
-       
+       console.log("tree success :" , tree)
         return (
             <div><Router history={history} routes={routes} /></div>
         )

@@ -5,6 +5,7 @@
 ***/
 
 import { GET_TREE , CHANGE_STATE} from '../../constants'
+import change_state from './change_state.js'
 /*
 var tree1 = [{
           name:'home',
@@ -67,7 +68,7 @@ var treey= [{
           }]
         }]
 
-var tree= [{
+var tree5= [{
           name:'home',
           icon:'../image/fly.png',
           path:'/',
@@ -95,16 +96,31 @@ var tree= [{
               state :false
             }]
           }
-        ]        
+        ] 
+
+
+ var tree= [{
+          name:'home',
+          icon:'../image/fly.png',
+          path:'/',
+          state :false
+          },{
+            name:'Feedback',
+            icon:'../image/fly.png',
+            path:'/foo',
+            state :false
+          }
+        ]                      
 
 export default function getTree (state = tree , action) {
   console.log("action :" , action)
 	if(action.type == GET_TREE){
 		return state ;
 	}else if(action.type == CHANGE_STATE){
-		//var obj = Object.assign(state);
-    alert(action.data)
-		return state
+		var obj = Object.assign(state);
+    change_state(obj , action.data);
+   // console.log("obj start :" , obj)
+		return state ;
 	}else {
 		return state;
 	}

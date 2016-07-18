@@ -46,12 +46,13 @@ class Treepanel extends Component {
     */
 
     render () {
-        
+        var that = this ;
         function clickMod(data , index){
             return function(){
              // alert(data[index].path)
              console.log("changeTreeState :" , dispatch)
               dispatch(changeTreeState(data[index].path))
+              //that.setState();
             }
         }
 
@@ -70,7 +71,8 @@ class Treepanel extends Component {
 
        
         const {tree , dispatch} = this.props
-      
+       console.log("trees xxxxxxxxxx :" , tree)
+       alert("hihi")
         function createTreeDate(data){  
               if(data){
                   let lis=[];
@@ -79,7 +81,9 @@ class Treepanel extends Component {
                      
                       let childrenDiv = null;
                       //console.log("index index : " , index)
+                     // alert("xxxxxxxxxx")
                       if(data[index].next && data[index].state){
+                          //alert("dff")
                           let next= createTreeDate(data[index].next);
                           childrenDiv=<div className="divLeft" >{next}</div>;
                       }
