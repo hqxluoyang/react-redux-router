@@ -68,7 +68,7 @@ var treey= [{
           }]
         }]
 
-var tree5= [{
+var tree= [{
           name:'home',
           icon:'../image/fly.png',
           path:'/',
@@ -93,13 +93,19 @@ var tree5= [{
               name:'shebei',
               icon:'../image/fly.png',
               path:'/foo',  
-              state :false
+              state :false,
+              next:[{
+                name:'shebei',
+                icon:'../image/fly.png',
+                path:'/foo',  
+                state :false,
+              }]
             }]
           }
         ] 
 
 
- var tree= [{
+ var treef= [{
           name:'home',
           icon:'../image/fly.png',
           path:'/',
@@ -113,7 +119,7 @@ var tree5= [{
         ]                      
 
 export default function getTree (state = tree , action) {
-  console.log("action :" , action)
+  
 	if(action.type == GET_TREE){
 		return state ;
 	}else if(action.type == CHANGE_STATE){

@@ -13,7 +13,7 @@ import Left from './left'
 export default function App({children}){
     return (
       <div>
-        <Left chd='' />
+        <Left />
         <Container chd={children} />
       </div>
     )

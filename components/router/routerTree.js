@@ -54,13 +54,14 @@ class TreeRouterPanel extends Component {
         const routes = {
                 path: '/',
                 component: App,
+                indexRoute: { component: Bar },
                 childRoutes: [
                   { path: 'home', component: Home },
                   { path: 'foo', component: Feedback },
                   { path: '*', component: Bar}
                 ]
               }
-       console.log("tree success :" , tree)
+       console.log("tree success :" , tree);
 
         return (
             <div><Router history={history} routes={routes} /></div>

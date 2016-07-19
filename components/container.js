@@ -28,6 +28,7 @@ var setContainer = function(){
 class Container extends Component {
 	render () {
 		const {chd} = this.props
+		console.log("chd :" , chd)
 		return (
 			<div className='_container'>
 				<Header />

@@ -65,7 +65,7 @@
 /******/ 	}
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "633369a1edec6c6009c3"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "04300c278bb9bb0a89b9"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
 /******/ 	
@@ -25692,7 +25692,7 @@
 	  return _react2.default.createElement(
 	    'div',
 	    null,
-	    _react2.default.createElement(_left2.default, { chd: '' }),
+	    _react2.default.createElement(_left2.default, null),
 	    _react2.default.createElement(_container2.default, { chd: children })
 	  );
 	}
@@ -26032,6 +26032,7 @@
 			value: function render() {
 				var chd = this.props.chd;
 
+				console.log("chd :", chd);
 				return _react2.default.createElement(
 					'div',
 					{ className: '_container' },
@@ -26816,7 +26817,6 @@
 		_createClass(Leftt, [{
 			key: 'render',
 			value: function render() {
-				var chd = this.props.chd;
 
 				return _react2.default.createElement(
 					'div',
@@ -26919,6 +26919,7 @@
 	            var routes = {
 	                path: '/',
 	                component: _.App,
+	                indexRoute: { component: _.Bar },
 	                childRoutes: [{ path: 'home', component: _.Home }, { path: 'foo', component: _.Feedback }, { path: '*', component: _.Bar }]
 	            };
 	            console.log("tree success :", tree);
@@ -27024,10 +27025,7 @@
 	            var that = this;
 	            function clickMod(data, index) {
 	                return function () {
-	                    // alert(data[index].path)
-	                    console.log("changeTreeState :", dispatch);
-	                    //dispatch(changeTreeState(data[index].path))
-	                    //that.setState();
+	                    data[index].state ? data[index].state = false : data[index].state = true;
 	                };
 	            }
 
@@ -27048,8 +27046,7 @@
 	            var tree = _props.tree;
 	            var dispatch = _props.dispatch;
 
-	            console.log("trees xxxxxxxxxx :", tree);
-	            alert("hihi");
+
 	            function createTreeDate(data) {
 	                if (data) {
 	                    var lis = [];
@@ -27057,10 +27054,9 @@
 	                    for (var index in data) {
 
 	                        var childrenDiv = null;
-	                        //console.log("index index : " , index)
-	                        // alert("xxxxxxxxxx")
+
 	                        if (data[index].next && data[index].state) {
-	                            //alert("dff")
+
 	                            var next = createTreeDate(data[index].next);
 	                            childrenDiv = _react2.default.createElement(
 	                                'div',
@@ -27109,22 +27105,9 @@
 	    return Treepanel;
 	}(_react.Component);
 
-	function mapStateToProps(state) {
-	    return {
-	        tree: state.tree
-	    };
-	}
-
-	function mapDispatchToProps(dispatch) {
-	    return {
-	        changeTreeState: (0, _redux.bindActionCreators)(_action_tree.changeTreeState, dispatch),
-	        dispatch: dispatch
-	    };
-	}
-
 	exports.default = (0, _reactRedux.connect)(function (state) {
-	    return mapStateToProps;
-	}, mapDispatchToProps)(Treepanel);
+	    return { tree: state.tree, router: state.routing };
+	}, {})(Treepanel);
 
 /***/ },
 /* 304 */
@@ -27554,7 +27537,7 @@
 	  }]
 	}];
 
-	var tree5 = [{
+	var tree = [{
 	  name: 'home',
 	  icon: '../image/fly.png',
 	  path: '/',
@@ -27579,11 +27562,17 @@
 	    name: 'shebei',
 	    icon: '../image/fly.png',
 	    path: '/foo',
-	    state: false
+	    state: false,
+	    next: [{
+	      name: 'shebei',
+	      icon: '../image/fly.png',
+	      path: '/foo',
+	      state: false
+	    }]
 	  }]
 	}];
 
-	var tree = [{
+	var treef = [{
 	  name: 'home',
 	  icon: '../image/fly.png',
 	  path: '/',

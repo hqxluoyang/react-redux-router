@@ -49,10 +49,7 @@ class Treepanel extends Component {
         var that = this ;
         function clickMod(data , index){
             return function(){
-             // alert(data[index].path)
-             console.log("changeTreeState :" , dispatch)
-              //dispatch(changeTreeState(data[index].path))
-              //that.setState();
+             data[index].state ? data[index].state=false : data[index].state = true;
             }
         }
 
@@ -71,8 +68,7 @@ class Treepanel extends Component {
 
        
         const {tree , dispatch} = this.props
-       console.log("trees xxxxxxxxxx :" , tree)
-       alert("hihi")
+      
         function createTreeDate(data){  
               if(data){
                   let lis=[];
@@ -80,10 +76,9 @@ class Treepanel extends Component {
                   for(let index in data){
                      
                       let childrenDiv = null;
-                      //console.log("index index : " , index)
-                     // alert("xxxxxxxxxx")
+                      
                       if(data[index].next && data[index].state){
-                          //alert("dff")
+                          
                           let next= createTreeDate(data[index].next);
                           childrenDiv=<div className="divLeft" >{next}</div>;
                       }
@@ -112,23 +107,10 @@ class Treepanel extends Component {
 
 }
 
-function mapStateToProps(state) {      
-  return {
-    tree:state.tree 
-  }
-}
-
-function mapDispatchToProps(dispatch) {
-  return {
-    changeTreeState : bindActionCreators(changeTreeState , dispatch),
-    dispatch
-  }
-}
-
 
 
 export default connect(
-  state => (mapStateToProps),
-  mapDispatchToProps
+   state => ({ tree: state.tree ,router:state.routing }),
+  { }
 )(Treepanel)
 

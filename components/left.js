@@ -4,7 +4,7 @@ import leftCss from  '../css/left.less'
 
 class Leftt extends Component {
 	render () {
-		const {chd} = this.props
+		
 		return (
 			<div className="left-panel">
 				<Linkto />
