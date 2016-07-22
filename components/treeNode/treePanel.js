@@ -3,6 +3,8 @@ import { bindActionCreators } from 'redux'
 import { Link, browserHistory , IndexLink} from 'react-router'
 import { getTreeState  , changeTreeState} from '../../actions/tree/action_tree'
 import { connect } from 'react-redux'
+import {Animation} from 'react-web-animation';
+
 
 require ("../../css/treePanel.less")
 
@@ -45,6 +47,27 @@ class Treepanel extends Component {
     }
     */
 
+
+    getKeyFrames() {
+        return [
+            { transform: 'scale(1)',    opacity: 1 },
+            { transform: 'scale(.5)',   opacity: 0.5},
+            { transform: 'scale(1)', opacity: 0.667},
+            { transform: 'scale(1)',   opacity: 0.6}
+        ];
+    }
+
+    getTiming( duration ) {
+        return {
+            duration,
+            
+            delay: 0,
+            iterations: 1,
+            direction: 'alternate',
+            fill: 'forwards'
+        };
+    }
+
     render () {
         var that = this ;
         function clickMod(data , index){
@@ -79,8 +102,15 @@ class Treepanel extends Component {
                       
                       if(data[index].next && data[index].state){
                           
-                          let next= createTreeDate(data[index].next);
-                          childrenDiv=<div className="divLeft" >{next}</div>;
+                          var next= createTreeDate(data[index].next);
+                          
+                          childrenDiv=<div className="divLeft" >
+                          <Animation keyframes={that.getKeyFrames()}
+                              timing={that.getTiming(1000)}>
+                             {next}
+                          </Animation>
+                          </div>;
+                          
                       }
 
                       let li = <li key={index}>
@@ -100,7 +130,9 @@ class Treepanel extends Component {
         
         return (
           <div className="treePanel">
-              {treeHtml} 
+               
+                  {treeHtml} 
+              
           </div>
         )
     }
